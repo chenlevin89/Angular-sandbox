@@ -1,0 +1,7 @@
+<div class="person-container">
+  <div><span>{{person.firstName}}</span></div>
+  <div><span>{{person.lastName}}</span></div>
+  <div><span>{{person.age}}</span></div>
+  <div *ngIf="person.nickname"><span>{{person.nickname}}</span></div>
+  <button (click)="onClick($event)">click</button>
+</div>

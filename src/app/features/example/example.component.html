@@ -1,0 +1,86 @@
+<div class="example-container">
+
+  <app-accordion header="View Providers & Custom Validation">
+    <form class="user-form-container"
+          [formGroup]="viewProvidersExample">
+      <app-user-date></app-user-date>
+      <button [disabled]="viewProvidersExample.invalid">Send</button>
+    </form>
+  </app-accordion>
+
+  <app-accordion header="The 'as' Syntax">
+    <div class="as-syntax-container">
+      <div class="address-container"
+           *ngIf=" (asSyntaxObservableExaple$ | async) as address ">
+        <div><B>Good</B></div>
+        <div><span>{{address.country}}</span></div>
+        <div><span>{{address.city}}</span></div>
+        <div><span>{{address.zipCode}}</span></div>
+      </div>
+
+      <div class="address-container">
+        <div><B>Bad</B></div>
+        <div><span>{{(asSyntaxObservableExaple$ | async).country}}</span></div>
+        <div><span>{{(asSyntaxObservableExaple$ | async).city}}</span></div>
+        <div><span>{{(asSyntaxObservableExaple$ | async).zipCode}}</span></div>
+      </div>
+    </div>
+  </app-accordion>
+
+  <app-accordion header="Generic pure pipe">
+    <div class="pipe-container">
+      <div><span>{{reapetString | genericPipe:genericPipeExample}}</span></div>
+    </div>
+  </app-accordion>
+
+  <app-accordion header="Resolver & RunOutsideAngular for polling">
+    <div class="run-out-side-angular-container"
+         *ngIf="runOutsideAngularExample">
+      <div><span>{{runOutsideAngularExample.name}}</span></div>
+      <div><span>{{runOutsideAngularExample.price | currency:'USD'}}</span></div>
+    </div>
+  </app-accordion>
+
+  <app-accordion header="Don't Manipulate Input">
+    <form class="user-form-container"
+          [formGroup]="manipulateInputExample">
+      <div class="text-container">
+        <div>
+          <app-input-text formControlName="text"></app-input-text>
+        </div>
+        <div>
+          <app-display-text [text]="manipulateInputExample.get('text').value"
+                            (textChanged)="manipulateInputExample.get('text').setValue($event)">
+          </app-display-text>
+        </div>
+      </div>
+      <button [disabled]="manipulateInputExample.invalid">Send</button>
+    </form>
+  </app-accordion>
+
+  <app-accordion header="Input as interface and parent component injection">
+    <app-person [person]="inputAsInterfaceExample"></app-person>
+  </app-accordion>
+
+  <app-accordion header="Structural directive">
+    <div *appCarousel="let curr of structuralDirectiveExample; let ctrl = controller">
+      <img src="{{'../../../assets/images/' + curr + '.png'}}" />
+      <div>
+        <button (click)="ctrl.previous()">previous</button>
+        <button (click)="ctrl.next()">next</button>
+      </div>
+    </div>
+  </app-accordion>
+
+  <app-accordion header="General">
+    <div><span class="bold">Debug:</span><span>ng.probe($0).componentInstance</span></div>
+    <div><span class="bold">Stracture:</span><span>break components to multiple sub components</span></div>
+    <div><span class="bold">Enum:</span><span>use enum insted of text comparison</span></div>
+    <div><span class="bold">Injector tree:</span><span>services as singletone - clean state</span></div>
+    <div><span class="bold">Stracture:</span><span>component desgin to handle user interaction - move complex logic to services</span></div>
+    <div><span class="bold">Class vs Interface</span><span>considered changed interface to calss using default value </span></div>
+    <div><span class="bold">Upgrade:</span><span>IVY as better render mechanism & libraries</span></div>
+    <div><span class="bold">Socket.io:</span><span>as better user experince</span></div>
+  </app-accordion>
+
+</div>

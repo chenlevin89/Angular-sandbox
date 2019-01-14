@@ -1,0 +1,56 @@
+:host{
+
+    .user-form-container{
+
+        button{
+            width: 255px;
+            margin-left: 10px;
+            background-color: #2196f3;
+            border-radius: 3px;
+            height: 25px;
+            outline: none;
+            cursor: pointer;
+            &:disabled{
+                opacity: 0.3;
+                cursor: default;
+            }
+        }
+    }
+
+    .text-container{
+        display: flex;
+        align-items: baseline;
+        div{
+            flex: 1 1;
+        }
+    }
+
+    .bold{
+        font-weight: bold;
+        margin-right: 5px;
+    }
+
+    img{
+        height: 180px;
+        width: 300px;
+    }
+
+    .as-syntax-container{
+        display: flex;
+        .address-container{
+            flex: 1 1;
+            B{
+                color: green;
+            }
+            &:nth-child(2){
+                B{
+                    color: red;
+                }
+            }
+        }
+    }
+
+    div{
+        line-height: 20px;
+    }
+}

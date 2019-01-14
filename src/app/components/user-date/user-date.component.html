@@ -1,0 +1,11 @@
+<div class="input-container">
+  <input placeholder="Enter first name" type="text" formControlName="firstName">
+  <label class="error" *ngIf="isFormControlHasError('firstName', 'required')">*required</label>
+</div>
+<div class="input-container">
+  <input placeholder="Enter last name" type="text" formControlName="lastName">
+  <label class="error" *ngIf="isFormControlHasError('lastName', 'mustInclude')" >
+   {{userForm.get('lastName').errors['mustInclude'].value}}
+  </label>
+  <label class="error" *ngIf="isFormControlHasError('lastName', 'required')">*required</label>
+</div>

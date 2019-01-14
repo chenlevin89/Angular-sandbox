@@ -1,0 +1,23 @@
+:host{
+    label{
+        font-size: 16px;
+        padding: 3px 10px;
+        border-radius: 3px;
+        margin-right: 20px;
+        min-width: 170px;
+        display: inline-block;
+        span{
+            color:gray;
+        }
+    }
+    span{
+        color: red;
+        font-weight: bold;
+        font-size: 24px;
+        cursor: pointer;
+        &:nth-child(3){
+            color:green;
+            margin-left: 2px;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+.accordion-container{
+    width: 60%;
+    margin: 0 auto 15px auto;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    .header{
+        padding: 15px;
+        cursor: pointer;
+        background: whitesmoke;
+    }
+    .body{
+        padding: 15px;
+        border-top:1px solid lightgray;
+    }
+}
