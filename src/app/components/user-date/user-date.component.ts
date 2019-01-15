@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { ControlContainer, FormGroupDirective, FormGroup } from '@angular/forms';
 
 @Component({
@@ -9,15 +9,19 @@ import { ControlContainer, FormGroupDirective, FormGroup } from '@angular/forms'
     { provide: ControlContainer, useExisting: FormGroupDirective }
   ]
 })
-export class UserDateComponent implements OnInit {
+export class UserDateComponent implements OnInit, DoCheck {
 
 
   userForm: FormGroup;
 
-  constructor(private _parentFormContainer: FormGroupDirective) {}
+  constructor(private _parentFormContainer: FormGroupDirective) { }
 
   ngOnInit() {
     this.userForm = this._parentFormContainer.form;
+  }
+
+  ngDoCheck() {
+    console.log(`ngDoCheck from: ${this.constructor.name}`);
   }
 
   isFormControlHasError(formName, errorName) {
