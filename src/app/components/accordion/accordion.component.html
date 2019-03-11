@@ -1,5 +1,8 @@
 <div class="accordion-container">
-  <div class="header" (click)="toggle = !toggle">{{header}}</div>
+  <div class="header" (click)="toggle = !toggle">
+    <span>{{header}}</span>
+    <app-toggle *ngIf="displayToggle" [toggle]="isToggle" (toggleChange)="toggleChange($event)"></app-toggle>
+  </div>
   <div  class="body" [ngClass]="{open: toggle}">
     <ng-container #container></ng-container> 
   </div>

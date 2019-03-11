@@ -1,0 +1,49 @@
+<div class="performance-container">
+
+  <app-accordion header="ngFor trackBy"
+                 [displayToggle]="true"
+                 [(isToggle)]="trackByToggle"
+                 [tempRef]="trackBy">
+    <ng-template #trackBy>
+      <div class="body">
+        <div class="table-container">
+          <table>
+            <thead>
+              <th>Name</th>
+              <th>Salary</th>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let curr of trackByList; let i = index; trackBy: trackByFunc()"
+                  (click)="onClick(curr, i)">
+                <td>{{curr.name}}</td>
+                <td>{{curr.salary}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </ng-template>
+  </app-accordion>
+
+  <app-accordion header="sortable list"
+                 [displayToggle]="false"
+                 [tempRef]="sortableList">
+    <ng-template #sortableList>
+      <div class="body app-search">
+        <app-search-list [list]="searchList"></app-search-list>
+      </div>
+    </ng-template>
+  </app-accordion>
+
+  <app-accordion header="pagination list"
+                 [displayToggle]="false"
+                 [tempRef]="paginationList">
+    <ng-template #paginationList>
+      <div class="body">
+        <app-pagination-list></app-pagination-list>
+      </div>
+    </ng-template>
+  </app-accordion>
+
+</div>

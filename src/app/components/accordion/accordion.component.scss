@@ -7,6 +7,8 @@
         padding: 15px;
         cursor: pointer;
         background: whitesmoke;
+        display: flex;
+        justify-content: space-between;
     }
     .body.open{
         padding: 15px;

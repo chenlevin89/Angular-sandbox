@@ -1,13 +1,20 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AccordionComponent } from './accordion/accordion.component';
-import { UserDateComponent } from './user-date/user-date.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { InputTextComponent } from './input-text/input-text.component';
-import { DisplayTextComponent } from './display-text/display-text.component';
-import { PersonComponent } from './person/person.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {AccordionComponent} from './accordion/accordion.component';
+import {UserDateComponent} from './user-date/user-date.component';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
+import {InputTextComponent} from './input-text/input-text.component';
+import {DisplayTextComponent} from './display-text/display-text.component';
+import {PersonComponent} from './person/person.component';
+import {ToggleComponent} from './toggle/toggle.component';
+import {PaginationListComponent} from './pagination-list/pagination-list.component';
+import {SearchComponent} from './search/search.component';
+import {SearchListComponent} from './search-list/search-list.component';
+import {ListComponent} from './list/list.component';
 
-const components = [AccordionComponent, UserDateComponent, InputTextComponent, DisplayTextComponent, PersonComponent];
+const components = [AccordionComponent, UserDateComponent,
+   InputTextComponent, DisplayTextComponent, PersonComponent, ToggleComponent, PaginationListComponent,
+   SearchComponent, SearchListComponent, ListComponent];
 
 @NgModule({
   declarations: components,
@@ -18,4 +25,4 @@ const components = [AccordionComponent, UserDateComponent, InputTextComponent, D
     FormsModule
   ]
 })
-export class ComponentsModule { }
+export class ComponentsModule {}

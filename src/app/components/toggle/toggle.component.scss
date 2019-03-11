@@ -1,0 +1,22 @@
+.toggle-container{
+    background-color: white;
+    width: 40px;
+    height: 18px;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    display: inline-flex;
+    align-items: center;
+    &.active{
+        justify-content: flex-end;
+        .toggle{
+            background-color: green;
+        }
+    }
+    .toggle{
+        background-color: gray;
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+        margin: 1px;
+    }
+}

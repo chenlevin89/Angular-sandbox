@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, TemplateRef, ViewChild, ViewContainerRef, EmbeddedViewRef } from '@angular/core';
+import {Component, OnInit, Input, TemplateRef, ViewChild, ViewContainerRef, EmbeddedViewRef, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-accordion',
@@ -9,8 +9,11 @@ export class AccordionComponent implements OnInit {
 
   @Input() header: string;
   @Input() tempRef: TemplateRef<any>;
+  @Input() displayToggle = false;
+  @Input() isToggle = false;
+  @Output() isToggleChange = new EventEmitter();
 
-  @ViewChild('container', {read: ViewContainerRef }) container: ViewContainerRef;
+  @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef;
 
   _toggle = false;
   get toggle() {
@@ -23,9 +26,13 @@ export class AccordionComponent implements OnInit {
 
   embededViewRef: EmbeddedViewRef<any>;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+  }
+
+  toggleChange(value) {
+    this.isToggleChange.emit(value);
   }
 
   private addTemplateRef() {

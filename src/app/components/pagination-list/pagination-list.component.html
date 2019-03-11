@@ -1,0 +1,9 @@
+<div class="pagination-list-container" (scroll)="onScroll($event)">
+  <div class="list-item" *ngFor="let post of posts$ | async ">
+    <div class="title">{{post.title}}</div>
+    <div class="body">{{post.body}}</div>
+  </div>
+  <div class="loader" *ngIf="loader">
+      <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+  </div>
+</div>
