@@ -1,0 +1,40 @@
+<div class="example-two-container">
+
+  <app-accordion header="Method Decorator"
+                 [tempRef]="methodDecorator">
+    <ng-template #methodDecorator>
+      <input type="number"
+             [formControl]="formControl" />
+      <button (click)="fibonacci(formControl.value)">Invoke Function</button>
+    </ng-template>
+  </app-accordion>
+
+  <app-accordion header="Display List"
+                 [tempRef]="displayList">
+    <ng-template #displayList>
+      <app-display-list [list]="displayListExample"></app-display-list>
+    </ng-template>
+  </app-accordion>
+
+  <app-accordion header="View Child"
+                 [tempRef]="viewChild">
+    <ng-template #viewChild>
+      <div class="view-child-container" (dblclick)="onDBLClick()">
+        <app-button-a></app-button-a>
+        <app-button-b #buttonB></app-button-b>
+      </div>
+    </ng-template>
+  </app-accordion>
+
+  <app-accordion header="General"
+                 [tempRef]="general">
+    <ng-template #general>
+      <div class="general-container">
+        <label>If you have some logic on ngOnInit that releated to input property, include it on setter also.</label>
+        <label>If you pass a referance to component input param, make sure you dont manipulate it's values, if you must
+          you can use deep clone pipe.</label>
+      </div>
+    </ng-template>
+  </app-accordion>
+
+</div>

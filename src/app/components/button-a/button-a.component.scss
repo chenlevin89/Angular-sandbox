@@ -1,0 +1,17 @@
+:host{
+    &.flip{
+        transform: rotateY( 180deg ) ;
+        transition: transform 0.5s;
+    }
+}
+
+.button-a{
+    padding: 8px;
+    width: 100px;
+    background-color: bisque;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.3);
+    display: inline-block;
+    cursor: pointer;
+}

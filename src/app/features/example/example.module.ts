@@ -7,6 +7,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { DirectivesModule } from 'src/app/directives/directives.module';
 import {PipesModule} from '../../pipes/pipes.module';
 import { ExampleResolver } from './example.resolver';
+import {DisplayListModule} from 'src/app/components/display-list/display-list.module';
 
 export const routes: Routes = [
   {path: '', component: ExampleComponent, resolve: {stock: ExampleResolver} }
@@ -20,7 +21,8 @@ export const routes: Routes = [
     DirectivesModule,
     ReactiveFormsModule,
     PipesModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    DisplayListModule.forRoot()
   ],
   providers: [
     ExampleResolver

@@ -1,0 +1,10 @@
+.display-list-container{
+    overflow-y: auto;
+    .item{
+        height: 20px;
+        .name{
+            margin-left: 5px;
+            color: var(--primary-color);
+        }
+    }
+}

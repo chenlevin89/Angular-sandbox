@@ -11,10 +11,12 @@ import {PaginationListComponent} from './pagination-list/pagination-list.compone
 import {SearchComponent} from './search/search.component';
 import {SearchListComponent} from './search-list/search-list.component';
 import {ListComponent} from './list/list.component';
+import {ButtonAComponent} from './button-a/button-a.component';
+import {ButtonBComponent} from './button-b/button-b.component';
 
 const components = [AccordionComponent, UserDateComponent,
-   InputTextComponent, DisplayTextComponent, PersonComponent, ToggleComponent, PaginationListComponent,
-   SearchComponent, SearchListComponent, ListComponent];
+  InputTextComponent, DisplayTextComponent, PersonComponent, ToggleComponent, PaginationListComponent,
+  SearchComponent, SearchListComponent, ListComponent, ButtonAComponent, ButtonBComponent];
 
 @NgModule({
   declarations: components,
