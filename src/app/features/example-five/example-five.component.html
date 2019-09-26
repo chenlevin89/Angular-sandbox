@@ -19,9 +19,23 @@
     </ng-template>
 </app-accordion> -->
 
+<app-accordion header="generic list"
+               [tempRef]="list">
+    <ng-template #list>
+        <app-generic-list [formControl]="genericList"
+                          [templateRef]="myItemList"></app-generic-list>
+    </ng-template>
+</app-accordion>
 
-<button #mybutton [attr.my-prop]="x | async">click</button>
-<p>{{x}}</p>
 
+<ng-template #myItemList
+             let-group="group"
+             let-func="clear">
+    <div [formGroup]="group">
+        <span>{{group.value.id}}</span>
+        <input type="text"
+               formControlName="value" />
+        <button (click)="func(group)"></button>
+    </div>
+</ng-template>
 
-<router-outlet></router-outlet>

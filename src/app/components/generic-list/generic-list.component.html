@@ -1,0 +1,9 @@
+<div class="container" >
+    <form [formGroup]="form">
+        <ng-container 
+        *ngFor="let control of form.get('list').controls"
+        [ngTemplateOutlet]="templateRef"
+        [ngTemplateOutletContext]="{group: control, clear: clear}">
+        </ng-container>
+    </form>
+</div>

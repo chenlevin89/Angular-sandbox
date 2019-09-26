@@ -6,6 +6,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {Routes, RouterModule} from '@angular/router';
 import {DirectivesModule} from 'src/app/directives/directives.module';
 import {TableModule} from 'src/app/components/table/table.module';
+import {GenericListModule} from 'src/app/components/generic-list/generic-list.module';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
     DirectivesModule,
     TableModule,
     RouterModule.forChild(routes),
+    GenericListModule
   ]
 })
 export class ExampleFiveModule {}
