@@ -13,7 +13,7 @@ export class AccordionComponent implements OnInit {
   @Input() isToggle = false;
   @Output() isToggleChange = new EventEmitter();
 
-  @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef;
+  @ViewChild('container', { read: ViewContainerRef, static: true }) container: ViewContainerRef;
 
   _toggle = false;
   get toggle() {

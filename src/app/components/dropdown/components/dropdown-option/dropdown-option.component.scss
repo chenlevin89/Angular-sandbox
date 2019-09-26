@@ -1,0 +1,18 @@
+:host{
+    .dropdown-option{
+        padding: 8px 10px;
+        cursor: pointer;
+        &:hover{
+            background-color:whitesmoke;
+        }
+        p{
+            margin:0;
+        }
+    }
+    &.selected{
+        .dropdown-option{
+            border-left: 3px solid darkblue;
+            padding-left: 6px;
+        }
+    }
+}

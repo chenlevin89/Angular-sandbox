@@ -1,0 +1,13 @@
+<td>{{row.id}}</td>
+  <td>{{row.action}}</td>
+  <td *ngIf="{loading: isLoading()} as data">
+    <button *ngIf="!data.loading"
+            (click)="approveAction()">approve</button>
+    <div class="lds-ring"
+         *ngIf="data.loading">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </td>

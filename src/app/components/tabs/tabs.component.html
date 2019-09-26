@@ -1,0 +1,16 @@
+<div class="tabs-container">
+
+    <div class="headers">
+        <div class="tab"
+             *ngFor="let tab of tabs"
+             (click)="selected = tab"
+             [class.selected]="selected === tab">
+            {{tab.appTab}}
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <ng-container [ngTemplateOutlet]="selected?.templateRef" ></ng-container>
+    </div>
+
+</div>

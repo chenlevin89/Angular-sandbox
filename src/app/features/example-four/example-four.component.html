@@ -1,0 +1,61 @@
+<app-accordion header="View Children"
+               [tempRef]="stateManagement">
+  <ng-template #stateManagement>
+    <div class="container">
+      <div *ngFor="let child of list$ | async">
+        <div #children>
+          <span>{{child.id}}</span>
+          <span>{{child.name}}</span>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</app-accordion>
+
+<app-accordion header="Intersection Observer"
+               [tempRef]="intersectionObserver">
+  <ng-template #intersectionObserver>
+    <input type="text"
+           (appIntersectionObserver)="visibilityChanges($event)" />
+  </ng-template>
+</app-accordion>
+
+<app-accordion header="Subject vs BehaviorSubject vs ReplaySubject"
+               [tempRef]="subjectCompare">
+  <ng-template #subjectCompare>
+
+  </ng-template>
+</app-accordion>
+
+<app-accordion header="Pagination directive"
+               [tempRef]="pagination">
+  <ng-template #pagination>
+    <div *appPagination="let displayedList$ of list$ | async; chunkSize:20; height:'200px' ">
+      <div *ngFor="let child of displayedList$ | async">
+        <div>
+          <span>{{child.id}}</span>
+          <span>{{child.name}}</span>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</app-accordion>
+
+<app-accordion header="Tabs"
+               [tempRef]="tabsRef">
+  <ng-template #tabsRef>
+
+    <app-tabs>
+      <ng-template appTab="First">
+        <div class="dropdown-container">
+            <app-dropdown [options]="[{id:1, displayText: 'option_a'}]" [formControl]="dropdownForm"> </app-dropdown>
+        </div>
+      </ng-template>
+
+      <ng-template appTab="Second">
+        <p>Second tab content</p>
+      </ng-template>
+    </app-tabs>
+
+  </ng-template>
+</app-accordion>

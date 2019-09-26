@@ -13,18 +13,28 @@ import {SearchListComponent} from './search-list/search-list.component';
 import {ListComponent} from './list/list.component';
 import {ButtonAComponent} from './button-a/button-a.component';
 import {ButtonBComponent} from './button-b/button-b.component';
+import {DisplayListModule} from './display-list/display-list.module';
+import {FakeComponent} from './fake/fake.component';
+import {DropdownIconItemComponent} from './dropdown-icon-item/dropdown-icon-item.component';
+import {IconModule} from './icon/icon.module';
+import {TestComponent} from './test/test.component';
+
 
 const components = [AccordionComponent, UserDateComponent,
   InputTextComponent, DisplayTextComponent, PersonComponent, ToggleComponent, PaginationListComponent,
-  SearchComponent, SearchListComponent, ListComponent, ButtonAComponent, ButtonBComponent];
+  SearchComponent, SearchListComponent, ListComponent, ButtonAComponent,
+  ButtonBComponent, FakeComponent, DropdownIconItemComponent, TestComponent];
 
 @NgModule({
   declarations: components,
-  exports: components,
+  exports: [...components, DisplayListModule],
   imports: [
+    DisplayListModule.forRoot(),
     CommonModule,
     ReactiveFormsModule,
-    FormsModule
-  ]
+    FormsModule,
+    IconModule
+  ],
+  entryComponents: [DisplayTextComponent, DropdownIconItemComponent]
 })
 export class ComponentsModule {}

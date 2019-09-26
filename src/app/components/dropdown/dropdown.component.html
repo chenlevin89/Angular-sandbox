@@ -1,0 +1,21 @@
+<div class="dropdown-container"
+     [class.disabled]="disabled"
+     #dropdownContainer>
+
+  <div class="placeholder"
+       (click)="isOpen$.next(!isOpen$.getValue())">
+    <p>{{placeholder$ | async}}</p>
+    <app-icon name="arrow_down"></app-icon>
+  </div>
+
+  <div class="dropdown-list"
+       [class.open]="isOpen$ | async">
+    <app-dropdown-search (textChanged)="onTextChanged($event)"></app-dropdown-search>
+    <div class="dropdown-options" #dropdownOptions>
+      <app-dropdown-option-list [options]="displayedOptions$ | async"
+                                [selectedMapping]="selectedMapping"
+                                [componentType]="componentType"
+                                (optionSelected)="onOptionSelected($event)"></app-dropdown-option-list>
+    </div>
+  </div>
+</div>

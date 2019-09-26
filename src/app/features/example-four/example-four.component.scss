@@ -1,0 +1,12 @@
+:host{
+   .container{
+       height: 200px;
+       overflow-y: auto;
+       span{
+           margin: 5px;
+       }
+   }
+   .dropdown-container{
+       width: 200px;
+   }
+}

@@ -1,5 +1,3 @@
 <div class="input-text-container">
-  <input type="text"
-        (keyup)="onChanged($event.target.value)"
-        [(ngModel)]="text">
+  <input type="text" [formControl]="text">
 </div>

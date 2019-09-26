@@ -1,0 +1,25 @@
+:host{
+    ul {
+        list-style-type: none;
+    }
+    li{
+        cursor: pointer;
+        position: relative;
+        app-icon{
+            position: absolute;
+            left: -12px;
+            top: 2px;
+            &.open{
+                transform: rotate(180deg);
+                top:0;
+            }
+        }
+    }
+    &::ng-deep{
+        svg{
+            height: 12px;
+            width: 12px;
+        }
+    }
+
+}

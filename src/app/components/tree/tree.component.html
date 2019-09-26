@@ -1,0 +1,8 @@
+<ul class="tree-container">
+    <app-tree-search (searchChange)="searchChange($event)"></app-tree-search>
+    <app-node *ngIf="displayedRoot?.children?.length else noData" [treeNode]="displayedRoot" (selected)="onSelected($event)"></app-node>
+</ul>
+
+<ng-template #noData>
+    <p>NO DATA</p>
+</ng-template>

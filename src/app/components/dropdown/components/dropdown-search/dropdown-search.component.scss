@@ -1,0 +1,21 @@
+.search-container{
+    position: relative;
+    input{
+        width: 100%;
+        padding: 6px 25px 6px 6px;
+        outline: none;
+        box-sizing: border-box;
+        font-size: 14px;
+        margin: 0;
+        border: none;
+        border-bottom: 1px solid #5ba4bc;
+    }
+    app-icon{
+        position: absolute;
+        right: 5px;
+        top:2px;
+        height: 100%;
+        width: 20px;
+        fill: #aba8a8;
+    }
+}

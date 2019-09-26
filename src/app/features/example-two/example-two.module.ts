@@ -5,9 +5,15 @@ import {Routes, RouterModule} from '@angular/router';
 import {ComponentsModule} from '../../components/components.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {DisplayListModule} from 'src/app/components/display-list/display-list.module';
+import {ExamppleTwoResolver} from './example-two-resolver';
 
 const routes: Routes = [
-  {path: '', component: ExampleTwoComponent}
+  {
+    path: '',
+    component: ExampleTwoComponent,
+    data: {customData: 'customData'},
+    resolve: {resolverData: ExamppleTwoResolver}
+  }
 ];
 
 @NgModule({
@@ -17,7 +23,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ComponentsModule,
     ReactiveFormsModule,
-    DisplayListModule.forRoot({numberOfItemsToDisplay: 4, theme: {'primary-color': 'gray'}})
+    DisplayListModule.forRoot({numberOfItemsToDisplay: 10, theme: {'primary-color': 'gray'}})
   ]
 })
 export class ExampleTwoModule {}

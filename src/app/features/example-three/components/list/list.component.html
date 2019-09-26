@@ -1,0 +1,38 @@
+<div class="list-container">
+  <table>
+
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Action</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody *ngIf="enablePerformance">
+      <tr *ngFor="let row of rows"
+          app-list-row
+          [row]="row"
+          (approveRow)="approveAction($event)"></tr>
+    </tbody>
+
+    <tbody *ngIf="!enablePerformance">
+      <tr *ngFor="let row of rows">
+        <td>{{row.id}}</td>
+        <td>{{row.action}}</td>
+        <td *ngIf="{loading: isLoading(row)} as data">
+          <button *ngIf="!data.loading"
+                  (click)="approveAction(row)">approve</button>
+          <div class="lds-ring"
+               *ngIf="data.loading">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>

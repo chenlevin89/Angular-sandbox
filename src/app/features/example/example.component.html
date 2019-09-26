@@ -111,4 +111,11 @@
     </ng-template>
   </app-accordion>
 
+  <app-accordion header="Redirect"
+                 [tempRef]="redirectlRef">
+    <ng-template #redirectlRef>
+      <button (click)="redirect()">Redirect</button>
+    </ng-template>
+  </app-accordion>
+
 </div>

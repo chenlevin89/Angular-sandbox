@@ -1,0 +1,27 @@
+<!-- <app-accordion header="Async Pagination directive"
+               [tempRef]="paginationRef">
+    <ng-template #paginationRef>
+        <div class="pagination"
+             *appFullPagination="asyncCallback.bind(this); takeUntil:takeUntil$; let asyncPaginationExample$">
+            <ng-container *ngIf="asyncPaginationExample$ | async as data">
+                <div *ngFor="let item of data.value">
+                    <p>{{item.text}}</p>
+                </div>
+                <div *ngIf="data.loading"
+                     class="lds-ellipsis">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </ng-container>
+        </div>
+    </ng-template>
+</app-accordion> -->
+
+
+<button #mybutton [attr.my-prop]="x | async">click</button>
+<p>{{x}}</p>
+
+
+<router-outlet></router-outlet>

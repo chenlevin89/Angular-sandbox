@@ -1,0 +1,71 @@
+<div class="example-three-container">
+
+  <app-accordion header="As Syntax with object"
+                 [tempRef]="asSyntax">
+    <ng-template #asSyntax>
+      <ng-container *ngIf="{status: asSyntax$ | async } as data">
+        <span [ngClass]="{'active': data.status}">Current status: {{data.status}}</span>
+      </ng-container>
+    </ng-template>
+  </app-accordion>
+
+  <app-accordion header="List Performance"
+                 [tempRef]="listPerformance"
+                 [displayToggle]="true"
+                 [(isToggle)]="listPerformanceToggle">
+    <ng-template #listPerformance>
+      <app-list-display [rows]="rows"
+                        (approveRow)="approveRow($event)"
+                        [enablePerformance]="listPerformanceToggle">
+      </app-list-display>
+    </ng-template>
+  </app-accordion>
+
+  <app-accordion header="Buffer events"
+                 [tempRef]="buffer">
+    <ng-template #buffer>
+      <div class="items-container">
+        <div class="item"
+             *ngFor="let item of displayItems$ | async"
+             (click)="selection$.next({$event:$event, id:item.id})">
+          {{item.text}}
+        </div>
+      </div>
+    </ng-template>
+  </app-accordion>
+
+  <app-accordion header="Save with loading"
+                 [tempRef]="saveWithLoading">
+    <ng-template #saveWithLoading>
+      <form [formGroup]="form">
+        <div *ngIf="!(loading$ | async)">
+          <div><input type="text"
+                   formControlName="name" /></div>
+          <div><input type="number"
+                   formControlName="value" /></div>
+          <button (click)="submitForm$.next(form.value)"
+                  [disabled]="form.invalid">Save</button>
+        </div>
+
+        <div class="lds-ring"
+             *ngIf="loading$ | async">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </form>
+    </ng-template>
+  </app-accordion>
+
+
+  <app-accordion header="Expression changed error"
+                 [tempRef]="expressionChangedError">
+    <ng-template #expressionChangedError>
+      <p class="header"
+         [ngStyle]="{color: color}">Header</p>
+      <app-stam (changedParentColor)="color = $event"></app-stam>
+    </ng-template>
+  </app-accordion>
+
+</div>

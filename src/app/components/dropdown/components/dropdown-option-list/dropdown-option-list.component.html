@@ -1,0 +1,9 @@
+<div class="dropdown-options">
+    <div *ngFor="let option of options"
+         class="dropdown-option"
+         (click)="onOptionSelected(option)">
+      <app-dropdown-option [option]="option"
+                           [selected]="selectedMapping[option.id]"
+                           [type]="componentType"></app-dropdown-option>
+    </div>
+  </div>

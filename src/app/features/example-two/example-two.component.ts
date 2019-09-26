@@ -2,9 +2,13 @@ import {Component, OnInit, ViewChild, ViewChildren, ContentChildren, QueryList} 
 import {logDecorator} from '../../decotators/logger.decorator';
 import {memoDecorator} from '../../decotators/memo.decorator';
 import {roundDecorator} from '../../decotators/round.decorator';
-import {FormControl} from '@angular/forms';
+import {FormControl, FormBuilder} from '@angular/forms';
 import {ListItem} from '../../components/display-list/display-list.entities';
 import {ButtonComponentInterface} from '../../components/components.entities';
+import {ActivatedRoute, Router, NavigationStart, NavigationEnd} from '@angular/router';
+import {filter, tap, map} from 'rxjs/operators';
+import {StockService} from 'src/app/services/stock.service';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'app-example-two',
@@ -13,18 +17,24 @@ import {ButtonComponentInterface} from '../../components/components.entities';
 })
 export class ExampleTwoComponent implements OnInit {
 
-  @ContentChildren(ButtonComponentInterface, {read: ButtonComponentInterface}) childrens: QueryList<ButtonComponentInterface>;
-
   formControl: FormControl = new FormControl();
   displayListExample: ListItem[];
+
+  testSubject$ = new BehaviorSubject(true);
+
 
   @roundDecorator(2)
   number = 10.2331;
 
-  constructor() {}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private stockService: StockService,
+    private fb:  FormBuilder) {}
 
   ngOnInit() {
     console.log(this.number);
+    console.log(this.activatedRoute.snapshot.data);
+
     this.displayListExample = this.buildListItems();
   }
 
@@ -33,8 +43,8 @@ export class ExampleTwoComponent implements OnInit {
     return this.calcFibonacci(n);
   }
 
-  onDBLClick() {
-    this.childrens.forEach(child => child.onSelect());
+  public allowLogger() {
+    return  true;
   }
 
   @memoDecorator

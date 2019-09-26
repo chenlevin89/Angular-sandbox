@@ -16,16 +16,6 @@
     </ng-template>
   </app-accordion>
 
-  <app-accordion header="View Child"
-                 [tempRef]="viewChild">
-    <ng-template #viewChild>
-      <div class="view-child-container" (dblclick)="onDBLClick()">
-        <app-button-a></app-button-a>
-        <app-button-b #buttonB></app-button-b>
-      </div>
-    </ng-template>
-  </app-accordion>
-
   <app-accordion header="General"
                  [tempRef]="general">
     <ng-template #general>
@@ -36,5 +26,10 @@
       </div>
     </ng-template>
   </app-accordion>
+  
+  <ng-container *ngIf="{x:testSubject$ | async} as data">
+    <span (click)="testSubject$.next(!testSubject$.getValue())">{{data.x}}</span>
+  </ng-container>
+  
 
 </div>

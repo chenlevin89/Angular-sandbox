@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Observable, of, timer, throwError } from 'rxjs';
-import { flatMap } from 'rxjs/operators';
-import { Stock } from '../models/stock.interface';
+import {Injectable} from '@angular/core';
+import {Observable, of, timer, throwError} from 'rxjs';
+import {flatMap} from 'rxjs/operators';
+import {Stock} from '../models/stock.interface';
 
 @Injectable()
 export class StockService {
@@ -18,7 +18,11 @@ export class StockService {
         }
         // return throwError(false); // simulate http error
         return timer(100).pipe(
-            flatMap(_ => of({ name: 'stock A', price: this.lastSavedMaxPrice, isChanged }))
+            flatMap(_ => of({name: 'stock A', price: this.lastSavedMaxPrice, isChanged}))
         );
+    }
+
+    getLastSavedPrice() {
+        return this.lastSavedMaxPrice;
     }
 }

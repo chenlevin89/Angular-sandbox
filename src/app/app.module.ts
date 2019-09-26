@@ -5,6 +5,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServicesModule } from './services/services.module';
+import {DisplayTextComponent} from './components/display-text/display-text.component';
 
 @NgModule({
   declarations: [

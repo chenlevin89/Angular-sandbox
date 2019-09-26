@@ -1,0 +1,16 @@
+<li class="node-container">
+    <p (click)="onClick($event)">
+        <app-icon *ngIf="treeNode.type === 'leaf'"
+                  name="account"></app-icon>
+        <app-icon *ngIf="treeNode.type === 'folder' && treeNode.children && treeNode.children.length"
+                  [class.open]="open"
+                  name="arrow_down">
+        </app-icon>
+        {{treeNode.text}}
+    </p>
+    <ul *ngIf="open">
+        <app-node *ngFor="let child of treeNode.children"
+                  (selected)="selected.emit($event)"
+                  [treeNode]="child"></app-node>
+    </ul>
+</li>
