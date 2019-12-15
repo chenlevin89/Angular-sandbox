@@ -1,41 +1,51 @@
-<!-- <app-accordion header="Async Pagination directive"
-               [tempRef]="paginationRef">
-    <ng-template #paginationRef>
-        <div class="pagination"
-             *appFullPagination="asyncCallback.bind(this); takeUntil:takeUntil$; let asyncPaginationExample$">
-            <ng-container *ngIf="asyncPaginationExample$ | async as data">
-                <div *ngFor="let item of data.value">
-                    <p>{{item.text}}</p>
-                </div>
-                <div *ngIf="data.loading"
-                     class="lds-ellipsis">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-            </ng-container>
-        </div>
-    </ng-template>
-</app-accordion> -->
+<app-accordion header="Class Decorator"
+               [tempRef]="classDecorator">
 
-<app-accordion header="generic list"
-               [tempRef]="list">
-    <ng-template #list>
-        <app-generic-list [formControl]="genericList"
-                          [templateRef]="myItemList"></app-generic-list>
-    </ng-template>
 </app-accordion>
 
-
-<ng-template #myItemList
-             let-group="group"
-             let-func="clear">
-    <div [formGroup]="group">
-        <span>{{group.value.id}}</span>
-        <input type="text"
-               formControlName="value" />
-        <button (click)="func(group)"></button>
-    </div>
+<ng-template #classDecorator>
+  <button (click)="start()">Start</button>
+  <button (click)="redirect()">Redirect</button>
 </ng-template>
 
+
+<app-accordion header="Full pagination"
+               [tempRef]="fullPagination">
+
+</app-accordion>
+
+<ng-template #fullPagination>
+  <div class="comments">
+    <div class="pagination"
+         *appFullPagination="asyncCallback.bind(this); takeUntil:takeUntil$; let asyncPaginationExample$">
+      <ng-container *ngIf="asyncPaginationExample$ | async as data">
+        <div *ngFor="let item of data.value">
+          <p>{{item.text}}</p>
+        </div>
+        <app-loader [show]="data.loading"></app-loader>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>
+
+
+<app-accordion header="Generic list"
+               [tempRef]="genericList">
+
+</app-accordion>
+
+<ng-template #genericList>
+  <app-generic-list [formControl]="genericListControl"
+                    [templateRef]="genericTemplateRef"></app-generic-list>
+  <p>Generic Form Valid - {{genericListControl.valid}}</p>
+</ng-template>
+
+<ng-template #genericTemplateRef
+             let-group="group"
+             let-clear="clear">
+  <div [formGroup]="group">
+      <span>{{group.get('id').value}}</span>
+      <input type="text" formControlName="name" />
+      <span (click)="clear(group.get('name'))" >X</span>
+  </div>
+</ng-template>

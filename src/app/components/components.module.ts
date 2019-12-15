@@ -18,12 +18,13 @@ import {FakeComponent} from './fake/fake.component';
 import {DropdownIconItemComponent} from './dropdown-icon-item/dropdown-icon-item.component';
 import {IconModule} from './icon/icon.module';
 import {TestComponent} from './test/test.component';
+import {LoaderComponent} from './loader/loader.component';
 
 
 const components = [AccordionComponent, UserDateComponent,
   InputTextComponent, DisplayTextComponent, PersonComponent, ToggleComponent, PaginationListComponent,
   SearchComponent, SearchListComponent, ListComponent, ButtonAComponent,
-  ButtonBComponent, FakeComponent, DropdownIconItemComponent, TestComponent];
+  ButtonBComponent, FakeComponent, DropdownIconItemComponent, TestComponent, LoaderComponent];
 
 @NgModule({
   declarations: components,

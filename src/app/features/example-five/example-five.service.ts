@@ -9,7 +9,7 @@ export class ExampleFiveService {
 
   constructor() {}
 
-  getData({pageIndex, chunkSize = 20}: {pageIndex: number, chunkSize?: number} = {pageIndex: 0}) {
+  getData({pageIndex, chunkSize }: {pageIndex: number, chunkSize?: number} = {pageIndex: 0, chunkSize: 20}) {
     console.log('get data', pageIndex);
     const result = [];
     for (let i = pageIndex * chunkSize; i < (pageIndex * chunkSize) + chunkSize; i++) {

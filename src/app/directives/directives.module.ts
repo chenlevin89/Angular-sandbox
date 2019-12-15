@@ -7,10 +7,11 @@ import {PaginationDirective} from './pagination.directive';
 import {MutationObserverDirective} from './mutation-observer.directive';
 import {AsyncPaginationDirective} from './async-pagination.directive';
 import {FullPaginationDirective} from './full-pagination.directive';
+import {HoverDirective} from './hover.directive';
 
 
 const directives = [MustIncludeDirective, CarouselDirective, IntersectionObserverDirective,
-    PaginationDirective, MutationObserverDirective, AsyncPaginationDirective, FullPaginationDirective];
+    PaginationDirective, MutationObserverDirective, AsyncPaginationDirective, FullPaginationDirective, HoverDirective];
 
 @NgModule({
     imports: [

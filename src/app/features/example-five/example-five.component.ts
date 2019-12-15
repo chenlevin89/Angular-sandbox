@@ -1,51 +1,56 @@
-import {Component, OnInit, ChangeDetectionStrategy, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import {Router} from '@angular/router';
+import {Observable, of, timer, Subject} from 'rxjs';
+import {Unsubscribe} from '../../decotators/unsubscribe.decorator';
 import {ExampleFiveService} from './example-five.service';
-import {Observable, Subject, of, fromEvent} from 'rxjs';
-import {FormArray, FormControl} from '@angular/forms';
+import {FormGroup, FormControl} from '@angular/forms';
 
-const CHUNK_SIZE = 100;
+const CHUNK_SIZE = 40;
 
-
+@Unsubscribe
 @Component({
   selector: 'app-example-five',
   templateUrl: './example-five.component.html',
   styleUrls: ['./example-five.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ExampleFiveComponent implements OnInit, AfterViewInit {
+export class ExampleFiveComponent implements OnInit {
 
-  @ViewChild('mybutton', {read: ElementRef, static: false}) mybutton: ElementRef;
-
-  x = of('chen');
-  genericList = new FormControl({
-    list: [{id: 1, value: 'a'}, {id: 2, value: 'b'}]
-  });
-
+  timer$: Observable<number>;
   takeUntil$ = new Subject();
+  genericListControl: FormControl;
 
-  constructor(
-    private exampleFiveService: ExampleFiveService,
-    private cdr: ChangeDetectorRef) {}
+  constructor(private router: Router, private service: ExampleFiveService) {}
 
   ngOnInit() {
-   this.genericList.valueChanges.subscribe(console.log);
+    this.timer$ = timer(0, 1000);
+    this.genericListControl = new FormControl({
+      list: [
+        {id: 1, name: 'title'},
+        {id: 2, name: 'title_2'}
+      ]
+    });
+    this.initializeListeners();
   }
 
-  ngAfterViewInit() {
+  redirect() {
+    this.router.navigate(['example-four']);
+  }
 
+  start() {
+    this.timer$.subscribe(console.log);
   }
 
   asyncCallback(pageIndex: number): Observable<any[]> {
     if (pageIndex * CHUNK_SIZE < 150) {
-      return this.exampleFiveService.getData({pageIndex, chunkSize: CHUNK_SIZE});
+      return this.service.getData({pageIndex, chunkSize: CHUNK_SIZE});
     }
     this.takeUntil$.next();
     return of([]);
   }
 
-  change() {
-    this.x = of('andy');
+  private initializeListeners(): void {
+    this.genericListControl.valueChanges.subscribe(console.log);
   }
-
 
 }

@@ -1,16 +1,19 @@
 import {Component, OnInit, Input, TemplateRef} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR, FormArray, FormBuilder, FormGroup} from '@angular/forms';
-import {identifierModuleUrl} from '@angular/compiler';
+import {
+  ControlValueAccessor, NG_VALUE_ACCESSOR, FormArray, FormBuilder,
+  FormGroup, FormControl, Validator, AbstractControl, ValidationErrors, Validators, NG_VALIDATORS
+} from '@angular/forms';
 
 @Component({
   selector: 'app-generic-list',
   templateUrl: './generic-list.component.html',
   styleUrls: ['./generic-list.component.scss'],
   providers: [
-    {provide: NG_VALUE_ACCESSOR, multi: true, useExisting: GenericListComponent}
+    {provide: NG_VALUE_ACCESSOR, multi: true, useExisting: GenericListComponent},
+    {provide: NG_VALIDATORS, multi: true, useExisting: GenericListComponent}
   ]
 })
-export class GenericListComponent implements OnInit, ControlValueAccessor {
+export class GenericListComponent implements OnInit, ControlValueAccessor, Validator {
 
   @Input() templateRef: TemplateRef<any>;
   form: FormGroup;
@@ -27,8 +30,8 @@ export class GenericListComponent implements OnInit, ControlValueAccessor {
     this.buildForm(obj);
   }
 
-  clear(e) {
-    console.log(e);
+  clear(control: FormControl) {
+    control.reset();
   }
 
   registerOnChange(fn: any): void {
@@ -42,12 +45,20 @@ export class GenericListComponent implements OnInit, ControlValueAccessor {
 
   }
 
+  validate(control: AbstractControl): ValidationErrors {
+    return this.form.valid ? null : {genericList: true};
+  }
+
   private buildForm(values: any) {
     const formArray = this.form.get('list') as FormArray;
     formArray.clear();
     if (values.list) {
       values.list.forEach(val => {
-        formArray.push(this.fb.group(val));
+        const formsControl = Object.keys(val).reduce((acc, curr) => {
+          acc[curr] = [val[curr], Validators.required];
+          return acc;
+        }, {});
+        formArray.push(this.fb.group(formsControl));
       });
     }
   }
