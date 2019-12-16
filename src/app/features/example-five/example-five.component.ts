@@ -3,7 +3,8 @@ import {Router} from '@angular/router';
 import {Observable, of, timer, Subject} from 'rxjs';
 import {Unsubscribe} from '../../decotators/unsubscribe.decorator';
 import {ExampleFiveService} from './example-five.service';
-import {FormGroup, FormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
+import {dynamicPipeData, DynamicData} from './example-five-config';
 
 const CHUNK_SIZE = 40;
 
@@ -19,6 +20,7 @@ export class ExampleFiveComponent implements OnInit {
   timer$: Observable<number>;
   takeUntil$ = new Subject();
   genericListControl: FormControl;
+  dynamicPipeData: DynamicData[] = dynamicPipeData;
 
   constructor(private router: Router, private service: ExampleFiveService) {}
 

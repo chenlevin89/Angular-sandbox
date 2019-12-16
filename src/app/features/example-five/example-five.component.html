@@ -44,8 +44,22 @@
              let-group="group"
              let-clear="clear">
   <div [formGroup]="group">
-      <span>{{group.get('id').value}}</span>
-      <input type="text" formControlName="name" />
-      <span (click)="clear(group.get('name'))" >X</span>
+    <span>{{group.get('id').value}}</span>
+    <input type="text"
+           formControlName="name" />
+    <span (click)="clear(group.get('name'))">X</span>
   </div>
+</ng-template>
+
+
+
+<app-accordion header="Dynamic pipe"
+               [tempRef]="dynamicPipe">
+
+</app-accordion>
+
+<ng-template #dynamicPipe>
+  <p *ngFor="let data of dynamicPipeData">
+    <span>{{data.text |  dynamic:data.pipe:data.pipeParam}}</span>
+  </p>
 </ng-template>
