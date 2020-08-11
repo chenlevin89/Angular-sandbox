@@ -17,7 +17,7 @@ export class DisplayListModule {
 
   constructor(private themeService: ThemeService) {}
 
-  static forRoot(config?: DisplayListConfig): ModuleWithProviders {
+  static forRoot(config?: DisplayListConfig): ModuleWithProviders<DisplayListModule> {
     return {
       ngModule: DisplayListModule,
       providers: [

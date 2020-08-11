@@ -71,7 +71,7 @@ export class VirtualScrollComponent implements OnInit {
       .fill(null)
       .map((_, i) => this.rowsData[i + startNode]);
 
-    if ((scrollTop >= contentHeight - containerHight) && !this.loading$.getValue() ) {
+    if ((scrollTop >= contentHeight - containerHight) && !this.loading$.getValue()) {
       this.index++;
       this.loading$.next(true);
       this.scrollReachEnd.emit(this.index);

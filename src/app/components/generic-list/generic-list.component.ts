@@ -18,6 +18,10 @@ export class GenericListComponent implements OnInit, ControlValueAccessor, Valid
   @Input() templateRef: TemplateRef<any>;
   form: FormGroup;
 
+  get controls(): AbstractControl[] {
+    return (this.form?.get('list') as FormArray)?.controls;
+  }
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {

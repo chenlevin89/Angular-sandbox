@@ -1,5 +1,6 @@
-import {Injectable, Component, Type, ViewContainerRef, ComponentFactoryResolver, ComponentRef, EventEmitter, Output} from '@angular/core';
+import { Injectable, Component, Type, ViewContainerRef, ComponentFactoryResolver, ComponentRef, EventEmitter, Output, Directive } from '@angular/core';
 import {observable, Subscription} from 'rxjs';
+
 
 @Injectable()
 export class DynamicLoadingService {
