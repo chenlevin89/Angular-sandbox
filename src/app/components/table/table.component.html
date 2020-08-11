@@ -1,3 +1,3 @@
 <div class="container" >
-    <p *ngFor="let item of list"> {{item.name}}</p>
+    <p app-table-item *ngFor="let item of list; trackBy: trackByFn; let i=index" [item]="getItem(i)" ></p>
 </div>

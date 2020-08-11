@@ -6,6 +6,8 @@ import {StateManagementService} from '../../services/state-management.service';
 import {BehaviorSubject, Subject, ReplaySubject} from 'rxjs';
 import {TreeNode} from 'src/app/components/tree/tree-entities';
 import {FormControl} from '@angular/forms';
+import {ExampleFiveService} from '../example-five/example-five.service';
+import {NotificationsService} from 'src/app/services/notifications.service';
 
 
 @Component({
@@ -27,12 +29,13 @@ export class ExampleFourComponent implements OnInit, AfterViewInit {
 
   dropdownForm = new FormControl();
 
-  constructor() {}
+  constructor(private notificationsService: NotificationsService) {}
 
   ngOnInit() {
     this.list$.next(this.buildList());
     this.invokeSubjects();
     this.listeners();
+
   }
 
   ngAfterViewInit() {
@@ -43,6 +46,14 @@ export class ExampleFourComponent implements OnInit, AfterViewInit {
     if (event.visibility) {
       event.element.focus();
     }
+  }
+
+  click() {
+    this.notificationsService.emitNotification({type: 0, value: {d: new Date()}});
+  }
+
+  clear() {
+    this.notificationsService.clearAllStreams();
   }
 
   appMutationObserverFunc(event) {

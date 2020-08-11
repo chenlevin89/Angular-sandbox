@@ -5,6 +5,7 @@ import {ExampleThreeService} from './example-three.service';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {Row} from './components/list/list-entity';
 import {StateManagementService} from '../../services/state-management.service';
+import {NotificationsService} from 'src/app/services/notifications.service';
 
 @Component({
   selector: 'app-example-three',
@@ -35,7 +36,8 @@ export class ExampleThreeComponent implements OnInit {
     private service: ExampleThreeService,
     private renderer: Renderer2,
     private ngZone: NgZone,
-    private fb: FormBuilder) {}
+    private fb: FormBuilder,
+    private notificationsService: NotificationsService) {}
 
 
   ngOnInit() {
@@ -54,6 +56,8 @@ export class ExampleThreeComponent implements OnInit {
     this.initalizeForm();
     this.setSaveAllObservable();
     this.rows = this.initalizeRows();
+
+    this.notificationsService.emitNotification({type: 1, value: {a: 1}});
   }
 
   approveRow(row: Row): void {

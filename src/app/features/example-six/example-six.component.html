@@ -1,0 +1,6 @@
+<form [formGroup]="form">
+  <input type="radio" formControlName="type" [value]="1" /> <span>1</span>
+  <input type="radio" formControlName="type" [value]="2" /> <span>2</span>
+
+  <input type="text" *ngIf="form.get('type').value === 2" formControlName="iosType">
+</form>

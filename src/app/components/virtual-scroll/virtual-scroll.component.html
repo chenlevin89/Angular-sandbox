@@ -1,0 +1,26 @@
+<div class="container"
+     [style.overflow]="'auto'"
+     [style.height.px]="config.containerHight"
+     (scroll)="onScroll($event)">
+  <div
+       class="content"
+       [style.height.px]="scrollResult?.contentHeight">
+
+    <div class="offset"
+         [style.transform]="'translateY(' + scrollResult?.offsetY + 'px)'">
+
+      <div *ngFor="let item of scrollResult?.visibleChildren"
+           [style.height.px]="config.rowHeight">
+        <ng-container [ngTemplateOutlet]="templateRef"
+                      [ngTemplateOutletContext]="{$implicit: item}">
+        </ng-container>
+      </div>
+
+      <div *ngIf="displayLoading$ | async">
+        loading...
+      </div>
+
+    </div>
+
+  </div>
+</div>

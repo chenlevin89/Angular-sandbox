@@ -6,6 +6,8 @@
 <ng-template #classDecorator>
   <button (click)="start()">Start</button>
   <button (click)="redirect()">Redirect</button>
+  <button (click)="redirect2()">Redirect2</button>
+  <button (click)="notify()"> notify</button>
 </ng-template>
 
 
@@ -60,6 +62,6 @@
 
 <ng-template #dynamicPipe>
   <p *ngFor="let data of dynamicPipeData">
-    <span>{{data.text |  dynamic:data.pipe:data.pipeParam}}</span>
+    <span>{{!isNull(data.text) ?   (data.text | dynamic:data.pipe:data.pipeParam) : (data.text | notAvailable) }} {{data.text ? 'asd' : null}}</span>
   </p>
 </ng-template>

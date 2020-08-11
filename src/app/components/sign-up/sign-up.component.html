@@ -1,0 +1,7 @@
+<form [formGroup]="signUp">
+
+  <input type="text" formControlName="userName" (blur)="registerOnTouchedFunc()" />
+
+  <input type="text" formControlName="userEmail" (blur)="registerOnTouchedFunc()" />
+
+</form>

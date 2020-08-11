@@ -1,17 +1,27 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, ChangeDetectionStrategy} from '@angular/core';
 
 @Component({
-  selector: 'app-table',
+  selector: '[app-table]',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+  styleUrls: ['./table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TableComponent implements OnInit {
+export class TableComponent {
 
   @Input() list: {name: string}[];
 
   constructor() {}
 
-  ngOnInit() {
+  trackByFn(index, item) {
+    return item.name;
+  }
+
+  getItem(index){
+    return this.list[index];
+  }
+
+  getA(index){
+    return new Date();
   }
 
 }
