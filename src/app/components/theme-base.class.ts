@@ -1,9 +1,10 @@
-import {ElementRef, AfterViewInit, InjectionToken, Injector, Renderer2} from '@angular/core';
+import { ElementRef, AfterViewInit, InjectionToken, Injector, Renderer2, Directive } from '@angular/core';
 
 export interface Theme {
   [key:string]: string;
 }
 
+@Directive()
 export abstract class ThemeBase implements AfterViewInit {
 
   constructor(private injector: Injector,
